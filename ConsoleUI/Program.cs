@@ -14,13 +14,22 @@ namespace ConsoleUI
             ////GetAllByDailyPriceTest();
             //GetAllByBrandTest(2);
             //ColorTest();
-            CarManager carManager = new CarManager(new EfCarDal());
-            foreach (var car in carManager.GetCarDetails())
-            {
-                Console.WriteLine(car.BrandName + "------" + car.ColorName);
-            }
+            DtoTest();
+            
         }
 
+        private static void DtoTest()
+        {
+            CarManager carManager = new CarManager(new EfCarDal());
+            Console.WriteLine("Id \t Model Year \t Brand \t Color \t Description \t Daily Price \n");
+
+            foreach (var car in carManager.GetCarDetails())
+            {
+                Console.WriteLine(car.Id + "\t" + car.ModelYear + "\t\t" + car.BrandName + "\t" + car.ColorName + "\t" + car.Description + "\t" + car.DailyPrice);
+
+            }
+
+        }
 
         private static void ColorTest()
         {

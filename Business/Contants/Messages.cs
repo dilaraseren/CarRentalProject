@@ -23,6 +23,7 @@ namespace Business.Contants
         public static string ValueError = "Günlük fiyat 0 dan büyük olmalı";
 
         public static string MaintenanceTime = "Sistem bakımda !";
+        public static string NotReturned = "Araba teslim edilmediği için kiralayamazsınız";
 
 
 

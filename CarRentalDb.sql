@@ -24,9 +24,11 @@ Email nvarchar(50),
 Password_ nvarchar (10)
 )
 CREATE TABLE Customers(
+CustomerId int primary key identity(1,1),
 UserId int,
 CompanyName nvarchar(50)
 )
+
 CREATE TABLE Rentals(
 Id int primary key identity(1,1),
 CarId int,
@@ -59,4 +61,5 @@ VALUES
 INSERT INTO Brands (BrandName)
 VALUES
 ('Audi A5'),('Fiat Egea'),('Volkswagen'),('Dacia Sandero'),('Fiat Linea'),('Opel Astra'),('Renault Fluence'),('Kia Picanto'),('BMW 5 Serisi'),('Peugeot 301') 
+
 

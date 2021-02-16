@@ -20,7 +20,7 @@ namespace Business.Concrete
 
         public IResult Add(User user)
         {
-            if (user.Password.Length < 8)
+            if (user.Password_.Length < 8)
             {
                 return new ErrorResult(Messages.CharacterNameInValid);
             }

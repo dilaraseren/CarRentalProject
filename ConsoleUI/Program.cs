@@ -1,4 +1,5 @@
 ﻿using Business.Concrete;
+using Business.Contants;
 using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
@@ -17,7 +18,24 @@ namespace ConsoleUI
             //ColorTest();
             //DtoTest();
             //ResultTest();
-        
+            UserManager usersManager = new UserManager(new EfUserDal());
+
+
+            var result = usersManager.GetAll();
+            if (result.Success == true)
+            {
+                foreach (var users in result.Data)
+                {
+                    Console.WriteLine(users.FirstName + " " + users.LastName + "\n");
+                   
+                }
+                Console.WriteLine(Messages.SuccessListed);
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
+
 
         }
 

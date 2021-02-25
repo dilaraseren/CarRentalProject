@@ -28,6 +28,7 @@ namespace WebAPI.Controllers
         [HttpPost("Add")]
         public string Post([FromForm] FileUpload objectFile)
         {
+            
             try
             {
                 if (objectFile.files.Length > 0)
@@ -39,8 +40,12 @@ namespace WebAPI.Controllers
                     }
                     using (FileStream fileStream = System.IO.File.Create(path + objectFile.files.FileName))
                     {
+                       
                         objectFile.files.CopyTo(fileStream);
                         fileStream.Flush();
+                       
+                      
+
                         return "Yükleme başarılı";
                     }
                 }

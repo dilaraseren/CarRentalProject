@@ -38,6 +38,14 @@ ReturnDate nvarchar(25)
 
 )
 
+CREATE TABLE CarImages(
+Id int primary key identity(1,1),
+CarId int,
+ImagePath text,
+Date DateTime,
+
+)
+
 INSERT INTO Cars(BrandId,ColorId,ModelYear,DailyPrice,Descriptions)
 values 
 

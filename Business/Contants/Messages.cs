@@ -24,8 +24,6 @@ namespace Business.Contants
 
         public static string MaintenanceTime = "Sistem bakımda !";
         public static string NotReturned = "Araba teslim edilmediği için kiralayamazsınız";
-
-
-
+        public static string TheNumberOfImagesUploadedHasExceeded = "Yüklenen resim sayısı aşıldı";
     }
 }

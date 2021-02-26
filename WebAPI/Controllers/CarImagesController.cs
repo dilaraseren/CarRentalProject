@@ -17,36 +17,42 @@ namespace WebAPI.Controllers
     public class CarImagesController : ControllerBase
     {
         ICarImageService _carImageService; //field
-        IWebHostEnvironment _webHostEnvironment;
+        IWebHostEnvironment _environment;
 
-        public CarImagesController(ICarImageService carImageService, IWebHostEnvironment webHostEnvironment)
+        public CarImagesController(ICarImageService carImageService, IWebHostEnvironment environment)
         {
             _carImageService = carImageService;
-            _webHostEnvironment = webHostEnvironment;
+            _environment = environment;
         }
 
         [HttpPost("Add")]
-        public string Post([FromForm] FileUpload objectFile)
+        public async Task<string> Add([FromForm]FileUpload objectFile)
         {
-            
+            System.IO.FileInfo ff = new System.IO.FileInfo(objectFile.files.FileName);
+            string fileExtension = ff.Extension;
+
+            var result = Guid.NewGuid().ToString("N")
+                + "_" + DateTime.Now.Month + "_"
+                + DateTime.Now.Day + "_"
+                + DateTime.Now.Year + fileExtension;
+
             try
             {
                 if (objectFile.files.Length > 0)
                 {
-                    string path = _webHostEnvironment.WebRootPath + "\\uploads\\";
+                    
+                    string path = _environment.WebRootPath + "\\Upload\\";
                     if (!Directory.Exists(path))
                     {
                         Directory.CreateDirectory(path);
                     }
-                    using (FileStream fileStream = System.IO.File.Create(path + objectFile.files.FileName))
+                    using (FileStream fileStream = System.IO.File.Create(path + result ))
                     {
-                       
+
                         objectFile.files.CopyTo(fileStream);
                         fileStream.Flush();
-                       
-                      
-
-                        return "Yükleme başarılı";
+                        return "\\Upload\\" + objectFile.files.FileName;
+                         
                     }
                 }
                 else
@@ -57,7 +63,7 @@ namespace WebAPI.Controllers
             catch (Exception exception)
             {
 
-                return exception.Message; ;
+                return exception.Message; 
             }
         }
 
@@ -78,6 +84,28 @@ namespace WebAPI.Controllers
         public IActionResult GetById(int id)
         {
             var result = _carImageService.GetById(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpPost("delete")]
+        public IActionResult Delete(CarImage carImage)
+        {
+            var result = _carImageService.Delete(carImage);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpPost("update")]
+        public IActionResult Update(CarImage carImage)
+        {
+            var result = _carImageService.Update(carImage);
             if (result.Success)
             {
                 return Ok(result);

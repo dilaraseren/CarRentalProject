@@ -16,13 +16,6 @@ CREATE TABLE Brands(
 BrandId int primary key identity(1,1),
 BrandName nvarchar(25)
 )
-CREATE TABLE Users(
-Id int primary key identity(1,1),
-FirstName nvarchar(50),
-LastName  nvarchar(50),
-Email nvarchar(50),
-Password_ nvarchar (10)
-)
 CREATE TABLE Customers(
 CustomerId int primary key identity(1,1),
 UserId int,
@@ -71,3 +64,4 @@ VALUES
 ('Audi A5'),('Fiat Egea'),('Volkswagen'),('Dacia Sandero'),('Fiat Linea'),('Opel Astra'),('Renault Fluence'),('Kia Picanto'),('BMW 5 Serisi'),('Peugeot 301') 
 
 
+Drop Table Users

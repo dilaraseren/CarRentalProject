@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Core.Entities.Concrete;
+using Entities.Concrete;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -15,37 +16,13 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(u => u.LastName).NotEmpty();
             RuleFor(U => U.LastName).MinimumLength(2);
             RuleFor(u => u.Email).NotEmpty();
-            RuleFor(u => u.Password_).Must(ValidatePassword);
+            RuleFor(u => u.Email).Must(Contains);
+           
         }
 
-        private bool ValidatePassword(string password_)
+        private bool Contains(string arg)
         {
-            const int MIN_LENGTH = 8;
-            const int MAX_LENGTH = 15;
-
-            if (password_ == null) throw new ArgumentNullException();
-
-            bool meetsLengthRequirements = password_.Length >= MIN_LENGTH && password_.Length <= MAX_LENGTH;
-            bool hasUpperCaseLetter = false;
-            bool hasLowerCaseLetter = false;
-            bool hasDecimalDigit = false;
-
-            if (meetsLengthRequirements)
-            {
-                foreach (char c in password_)
-                {
-                    if (char.IsUpper(c)) hasUpperCaseLetter = true;
-                    else if (char.IsLower(c)) hasLowerCaseLetter = true;
-                    else if (char.IsDigit(c)) hasDecimalDigit = true;
-                }
-            }
-
-            bool isValid = meetsLengthRequirements
-                        && hasUpperCaseLetter
-                        && hasLowerCaseLetter
-                        && hasDecimalDigit
-                        ;
-            return isValid;
+            return arg.Contains("@");
         }
     }
 }

@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Core.Entities.Concrete;
+using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
-namespace Business.Contants
+namespace Business.Constants
 {
     public static class Messages 
         //newlememek için static
@@ -23,7 +25,18 @@ namespace Business.Contants
         public static string ValueError = "Günlük fiyat 0 dan büyük olmalı";
 
         public static string MaintenanceTime = "Sistem bakımda !";
+
         public static string NotReturned = "Araba teslim edilmediği için kiralayamazsınız";
+
         public static string TheNumberOfImagesUploadedHasExceeded = "Yüklenen resim sayısı aşıldı";
+
+        public static string AuthorizationDenied = "Yetkiniz yok!";
+        public static string UserRegistered = "Kayıt oldu";
+        public static string UserNotFound = "Kullanıcı bulunamadı";
+        public static string SuccessfulLogin = "Başarılı giriş";
+        public static string PasswordError = "Hatalı giriş";
+        public static string UserAlreadyExists = "Kullanıcı mevcut";
+        public static string AccessTokenCreated = "Token oluşturuldu";
+
     }
 }

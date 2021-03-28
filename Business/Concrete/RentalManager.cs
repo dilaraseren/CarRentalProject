@@ -54,12 +54,12 @@ namespace Business.Concrete
             return new SuccessDataResult<Rental>(_rentalDal.Get(r =>r.Id == rentalId));
         }
 
-        public IDataResult<Rental> GetByRentDate(string rentDate)
+        public IDataResult<Rental> GetByRentDate(DateTime rentDate)
         {
             return new SuccessDataResult<Rental>(_rentalDal.Get(r => r.RentDate == rentDate));
         }
 
-        public IDataResult<Rental> GetByReturndate(string returndate)
+        public IDataResult<Rental> GetByReturndate(DateTime returndate)
         {
             var result = _rentalDal.Get(r => r.ReturnDate == null);
             if (result != null)

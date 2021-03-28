@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace WebAPI.Controllers
@@ -57,6 +58,7 @@ namespace WebAPI.Controllers
 
         public IActionResult GetAll()
         {
+            
             var result = _rentalService.GetAll();
             if (result.Success)
             {
@@ -103,7 +105,7 @@ namespace WebAPI.Controllers
 
         [HttpGet("getbyrentdate")]
 
-        public IActionResult GetByRentDate(string rentDate)
+        public IActionResult GetByRentDate(DateTime rentDate)
         {
             var result = _rentalService.GetByRentDate(rentDate);
             if (result.Success)
@@ -115,7 +117,7 @@ namespace WebAPI.Controllers
 
         [HttpGet("getbyreturndate")]
 
-        public IActionResult GetByReturnDate(string returnDate)
+        public IActionResult GetByReturnDate(DateTime returnDate)
         {
             var result = _rentalService.GetByReturndate(returnDate);
             if (result.Success)

@@ -12,8 +12,8 @@ namespace Business.Abstract
         IDataResult<Rental> GetById(int rentalId);
         IDataResult<Rental> GetByCarId(int carId);
         IDataResult<Rental> GetByCustomerId(int customerId);
-        IDataResult<Rental> GetByRentDate(string rentDate);
-        IDataResult<Rental> GetByReturndate(string returndate);
+        IDataResult<Rental> GetByRentDate(DateTime rentDate);
+        IDataResult<Rental> GetByReturndate(DateTime returndate);
         IResult Add(Rental rental);
         IResult Delete(Rental rental);
         IResult Update(Rental rental);

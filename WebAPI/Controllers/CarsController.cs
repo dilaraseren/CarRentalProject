@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace WebAPI.Controllers
@@ -57,6 +58,7 @@ namespace WebAPI.Controllers
         
         public IActionResult GetAll()
         {
+           
             var result = _carService.GetAll();
             if (result.Success)
             {
@@ -117,6 +119,7 @@ namespace WebAPI.Controllers
 
         public IActionResult GetCarDetails()
         {
+            Thread.Sleep(3000);
             var result = _carService.GetCarDetails();
             if (result.Success)
             {

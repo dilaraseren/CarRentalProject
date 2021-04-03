@@ -23,6 +23,7 @@ namespace Business.Concrete
         [ValidationAspect(typeof(RentalValidator))]
         public IResult Add(Rental rental)
         {
+            string date = DateTime.Now.ToString("dd.MM.yyyy");
             _rentalDal.Add(rental);
             return new SuccessResult(Messages.SuccessAdded);
         }

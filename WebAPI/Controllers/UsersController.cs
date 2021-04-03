@@ -31,7 +31,7 @@ namespace WebAPI.Controllers
             return BadRequest(result.Message);
         }
 
-        [HttpGet("geybyemail")]
+        [HttpGet("getbyemail")]
         public IActionResult GetByMail(string email)
         {
             var result = _userService.GetByMail(email);
